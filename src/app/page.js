@@ -1,9 +1,18 @@
+"use client"; // Markiere diese Komponente als Client Component
+
 import Image from "next/image";
+import { Typography, Button, Box, Container, Divider } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import styles from "./page.module.css";
 
 export default function Home() {
+  const theme = useTheme(); // Zugriff auf das Theme, um die Farben zu verwenden
+
   return (
-    <div className={styles.page}>
+    <Container
+      maxWidth="md"
+      sx={{ backgroundColor: theme.palette.background.default, padding: 4 }}
+    >
       <main className={styles.main}>
         <Image
           className={styles.logo}
@@ -13,83 +22,80 @@ export default function Home() {
           height={38}
           priority
         />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
+        <Typography
+          variant="h4"
+          color="primary"
+          gutterBottom
+          sx={{ marginTop: 2 }}
+        >
+          Willkommen zur Next.js Demo
+        </Typography>
+
+        <Typography variant="body1" color="text.primary" paragraph>
+          Beginne, indem du <code>src/app/page.js</code> bearbeitest. Speichere
+          die Datei und sieh die Änderungen sofort.
+        </Typography>
+
+        <Typography variant="body2" color="text.secondary" paragraph>
+          Speichern Sie Ihre Arbeit und sehen Sie die Änderungen sofort.
+        </Typography>
+
+        <Box mt={4} display="flex" gap={2}>
+          <Button
+            variant="contained"
+            color="primary"
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image
-              className={styles.logo}
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
+            Deploy Now
+          </Button>
+          <Button
+            variant="outlined"
+            color="secondary"
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.secondary}
           >
-            Read our docs
-          </a>
-        </div>
+            Read Docs
+          </Button>
+        </Box>
+
+        <Divider sx={{ marginY: 4, backgroundColor: theme.palette.divider }} />
+
+        <footer className={styles.footer}>
+          <Box display="flex" gap={3}>
+            <Button
+              variant="text"
+              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ color: theme.palette.text.hint }}
+            >
+              Learn
+            </Button>
+            <Button
+              variant="text"
+              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ color: theme.palette.text.hint }}
+            >
+              Examples
+            </Button>
+            <Button
+              variant="text"
+              href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ color: theme.palette.text.hint }}
+            >
+              Go to nextjs.org →
+            </Button>
+          </Box>
+        </footer>
       </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    </Container>
   );
 }
